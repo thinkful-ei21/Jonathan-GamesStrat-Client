@@ -12,7 +12,12 @@ export class GameStrat extends Component {
       <li key={index}>{game}</li>
     ));
 
-    return <ul>{this.games}</ul>;
+    return (
+      <div>
+        <h2>Welcome to GameStrat</h2>
+        <ul>{this.games}</ul>
+      </div>
+    );
   }
 }
 

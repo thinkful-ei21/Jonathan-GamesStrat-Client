@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../config';
+
 export const FETCH_GAMES_REQUEST = 'FETCH_GAMES_REQUEST';
 export const fetchGamesRequest = () => ({
   type: FETCH_GAMES_REQUEST
@@ -17,7 +19,7 @@ export const fetchGamesError = err => ({
 
 export const fetchGames = () => dispatch => {
   dispatch(fetchGamesRequest());
-  fetch('http://localhost:8080/api/GameStrat', { method: 'GET' })
+  fetch(`${API_BASE_URL}/games`, { method: 'GET' })
     .then(res => {
       if (!res.ok) {
         return Promise.reject(res.statusText);
