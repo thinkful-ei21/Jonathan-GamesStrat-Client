@@ -19,8 +19,10 @@ export const fetchGamesError = err => ({
 
 export const fetchGames = () => dispatch => {
   dispatch(fetchGamesRequest());
+  console.log('GOT HERE: fetchGames');
   fetch(`${API_BASE_URL}/games`, { method: 'GET' })
     .then(res => {
+      console.log('GOT HERE: int the fetch');
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }

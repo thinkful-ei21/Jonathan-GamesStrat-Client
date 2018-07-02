@@ -21,7 +21,8 @@ const gamesReducer = (state = initalState, action) => {
     return {
       ...state,
       games: action.games,
-      loading: false
+      loading: false,
+      error: null
     };
   }
   if (action.type === FETCH_GAMES_ERROR) {

@@ -13,10 +13,10 @@ export class GameStrat extends Component {
     ));
 
     return (
-      <div>
+      <section>
         <h2>Welcome to GameStrat</h2>
         <ul>{this.games}</ul>
-      </div>
+      </section>
     );
   }
 }
