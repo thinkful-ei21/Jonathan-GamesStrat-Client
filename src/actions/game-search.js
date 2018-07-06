@@ -17,17 +17,18 @@ export const fetchGamesError = err => ({
   err
 });
 
-export const fetchGames = () => dispatch => {
+export const fetchGames = _searchTerm => dispatch => {
   dispatch(fetchGamesRequest());
-  console.log('GOT HERE: fetchGames');
-  fetch(`${API_BASE_URL}/games`, { method: 'GET' })
+  const searchTerm = `/?search=${_searchTerm}`;
+  fetch(`${API_BASE_URL}/games${searchTerm}`, { method: 'GET' })
     .then(res => {
-      console.log('GOT HERE: int the fetch');
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }
       return res.json();
     })
-    .then(data => dispatch(fetchGamesSuccess(data.games)))
+    .then(data => {
+      dispatch(fetchGamesSuccess(data));
+    })
     .catch(err => dispatch(fetchGamesError(err)));
 };

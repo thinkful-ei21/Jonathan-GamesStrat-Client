@@ -2,7 +2,7 @@ import {
   FETCH_GAMES_REQUEST,
   FETCH_GAMES_SUCCESS,
   FETCH_GAMES_ERROR
-} from '../actions';
+} from '../actions/game-search';
 
 const initalState = {
   games: [],
