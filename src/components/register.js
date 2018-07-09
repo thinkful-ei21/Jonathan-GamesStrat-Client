@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { reduxForm, Field, focus } from 'redux-form';
 import { registerUser } from '../actions/users';
 import { login } from '../actions/auth';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
@@ -9,12 +9,12 @@ const matchesPassword = matches('password');
 
 export class Registration extends Component {
   onSubmit(values) {
-    console.log(values);
     const { username, password, firstName, lastName } = values;
     const user = { username, password, firstName, lastName };
     return this.props
       .dispatch(registerUser(user))
-      .then(() => this.props.dispatch(login(username, password)));
+      .then(() => this.props.dispatch(login(username, password)))
+      .then(() => this.props.history.push('/search'));
   }
 
   render() {

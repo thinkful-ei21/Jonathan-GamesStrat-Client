@@ -1,46 +1,35 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
-import { fetchGames } from '../actions/game-search';
-
-import EditStrat from './edit-strat';
 import Landing from './landing-page';
 import Strat from './strat';
 import Login from './login';
 import Register from './register';
 import SearchGames from './search-games';
+import Game from './game';
+import AddStrat from './add-strat';
+import Header from './header';
 
-export class GameStrat extends Component {
+export default class GameStrat extends Component {
   render() {
-    const games = this.props.games.map((game, index) => {
-      const cover = game.cover ? (
-        <img src={game.cover.url} alt="cover of the game" />
-      ) : null;
-      return (
-        <li key={index}>
-          {game.name} {cover}
-        </li>
-      );
-    });
-
     return (
       <section>
-        <h1>GameStrat</h1>
-        <button>Profile</button>
-        {/* <Landing /> */}
-        <Login />
-        <Register />
-        {/* <SearchGames /> */}
-        {/* <Strat /> */}
-        {/* <EditStrat /> */}
-        {/* <ul>{games}</ul> */}
+        <Route path="/" component={Header} />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/login" component={Register} />
+        <Route exact path="/search" component={SearchGames} />
+        <Route exact path="/game/:gameId" component={Game} />
+        <Route exact path="/game/:gameId/:stratId" component={Strat} />
+        <Route exact path="/addStrat/:gameId" component={AddStrat} />
       </section>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  games: state.games.games
-});
+// const mapStateToProps = state => ({
+//   loggedIn: state.authRed.currentUser !== null
+// });
 
-export default connect(mapStateToProps)(GameStrat);
+// export default withRouter(connect(mapStateToProps)(GameStrat));

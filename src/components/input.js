@@ -11,11 +11,12 @@ export default class Input extends React.Component {
 
     return (
       <div>
+        {error}
         <Element
           {...this.props.input}
           id={this.props.input.name}
           type={this.props.type}
-          element={this.props.element}
+          // element={this.props.element}
           placeholder={this.props.placeholder}
         >
           {this.props.children}

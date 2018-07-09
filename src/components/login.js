@@ -8,7 +8,9 @@ import Input from './input';
 
 export class Login extends Component {
   onSubmit(values) {
-    return this.props.dispatch(login(values.username, values.password));
+    this.props
+      .dispatch(login(values.loginUsername, values.loginPassword))
+      .then(() => this.props.history.push('/search'));
   }
 
   render() {
@@ -24,18 +26,18 @@ export class Login extends Component {
       <form onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}>
         {error}
         <h3>LOGIN</h3>
-        <label htmlFor="login-username">Username</label>
+        <label htmlFor="loginUsername">Username</label>
         <Field
           component={Input}
           type="text"
-          name="login-username"
+          name="loginUsername"
           validate={[required, nonEmpty]}
         />
-        <label htmlFor="login-password">Password</label>
+        <label htmlFor="loginPassword">Password</label>
         <Field
           component={Input}
           type="password"
-          name="login-password"
+          name="loginPassword"
           validate={[required, nonEmpty]}
         />
         <button>Login</button>
@@ -43,6 +45,10 @@ export class Login extends Component {
     );
   }
 }
+
+// const mapStateToProps = state => ({
+//   loggedIn: state.authRed.currentUser !== null
+// });
 
 export default reduxForm({
   form: 'login',

@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
 
 export const FETCH_GAMES_REQUEST = 'FETCH_GAMES_REQUEST';
 export const fetchGamesRequest = () => ({
@@ -21,12 +22,8 @@ export const fetchGames = _searchTerm => dispatch => {
   dispatch(fetchGamesRequest());
   const searchTerm = `/?search=${_searchTerm}`;
   fetch(`${API_BASE_URL}/games${searchTerm}`, { method: 'GET' })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText);
-      }
-      return res.json();
-    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
     .then(data => {
       dispatch(fetchGamesSuccess(data));
     })
