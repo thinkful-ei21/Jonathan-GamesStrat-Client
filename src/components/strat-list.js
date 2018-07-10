@@ -6,20 +6,29 @@ import { deleteStrat } from '../actions/delete-strat';
 
 export class StratList extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchStrats(this.props.gameId));
+    const gameId = this.props.gameId;
+    this.props.dispatch(fetchStrats(gameId));
   }
-  deleteStrat() {
-    console.log(this.props.gameId);
-    this.props.dispatch(deleteStrat(this.props.gameId));
-    this.props.dispatch(fetchStrats(this.props.gameId));
+  deleteStrat(stratId) {
+    const gameId = this.props.gameId;
+    this.props
+      .dispatch(deleteStrat(stratId))
+      .then(() => this.props.dispatch(fetchStrats(gameId)));
   }
   render() {
     const gameId = this.props.gameId;
     const strats = this.props.strats.map((strat, index) => {
+      let delButton;
+      if (this.props.loggedIn && this.props.user.id === strat.userId.id) {
+        delButton = (
+          <button onClick={() => this.deleteStrat(strat.id)}>Delete</button>
+        );
+      }
       return (
         <li key={index}>
-          <Link to={`/game/${gameId}/${strat.id}`}>{strat.title} </Link>
-          <button onClick={() => this.deleteStrat()}>Delete</button>
+          <Link to={`/game/${gameId}/${strat.id}`}>{strat.title}</Link>
+          {strat.userId.username}
+          {delButton}
         </li>
       );
     });
@@ -28,7 +37,9 @@ export class StratList extends Component {
 }
 
 const mapStateToProps = state => ({
-  strats: state.stratsRed.strats
+  strats: state.stratsRed.strats,
+  user: state.authRed.currentUser,
+  loggedIn: state.authRed.currentUser !== null
 });
 
 export default connect(mapStateToProps)(StratList);

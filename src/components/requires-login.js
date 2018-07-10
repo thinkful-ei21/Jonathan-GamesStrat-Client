@@ -8,7 +8,7 @@ export default () => Component => {
     if (authenticating) {
       return <div>Logging in...</div>;
     } else if (!loggedIn) {
-      return <Redirect to="/" />;
+      return <Redirect to="/search" />;
     }
 
     return <Component {...passThroughProps} />;

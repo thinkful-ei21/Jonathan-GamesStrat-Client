@@ -10,6 +10,7 @@ import SearchGames from './search-games';
 import Game from './game';
 import AddStrat from './add-strat';
 import Header from './header';
+import Onboarding from './onboarding';
 
 export default class GameStrat extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class GameStrat extends Component {
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/login" component={Register} />
+        <Route exact path="/welcome" component={Onboarding} />
         <Route exact path="/search" component={SearchGames} />
         <Route exact path="/game/:gameId" component={Game} />
         <Route exact path="/game/:gameId/:stratId" component={Strat} />

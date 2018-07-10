@@ -18,10 +18,9 @@ export const fetchOneStratError = err => ({
   err
 });
 
-export const fetchOneStrat = _stratId => dispatch => {
+export const fetchOneStrat = stratId => dispatch => {
   dispatch(fetchOneStratRequest());
-  const stratId = `/?search=${_stratId}`;
-  return fetch(`${API_BASE_URL}/strats${stratId}`, { method: 'GET' })
+  return fetch(`${API_BASE_URL}/strats/${stratId}`, { method: 'GET' })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(data => {

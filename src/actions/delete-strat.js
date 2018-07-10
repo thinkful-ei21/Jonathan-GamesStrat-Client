@@ -18,10 +18,10 @@ export const deleteStratsError = err => ({
   err
 });
 
-export const deleteStrat = gameId => (dispatch, getState) => {
+export const deleteStrat = stratId => (dispatch, getState) => {
   const authToken = getState().authRed.authToken;
   dispatch(deleteStratsRequest());
-  fetch(`${API_BASE_URL}/strats/${gameId}`, {
+  return fetch(`${API_BASE_URL}/strats/${stratId}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${authToken}`

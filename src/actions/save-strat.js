@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
+import { SubmissionError } from 'redux-form';
 
 export const SAVE_STRAT_REQUEST = 'SAVE_STRAT_REQUEST';
 export const saveStratRequest = () => ({
@@ -34,5 +35,14 @@ export const saveStrat = newStrat => (dispatch, getState) => {
     .then(data => {
       dispatch(saveStratSuccess(data));
     })
-    .catch(err => dispatch(saveStratError(err)));
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
 };

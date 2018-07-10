@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
+
 import { registerUser } from '../actions/users';
 import { login } from '../actions/auth';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 import Input from './input';
+
 const passwordLength = length({ min: 10, max: 72 });
 const matchesPassword = matches('password');
 
@@ -14,7 +16,7 @@ export class Registration extends Component {
     return this.props
       .dispatch(registerUser(user))
       .then(() => this.props.dispatch(login(username, password)))
-      .then(() => this.props.history.push('/search'));
+      .then(() => this.props.history.push('/welcome'));
   }
 
   render() {
@@ -41,7 +43,7 @@ export class Registration extends Component {
           id="password"
           validate={[required, passwordLength, isTrimmed]}
         />
-        <label htmlFor="validate-password">Validate Password</label>
+        <label htmlFor="validate-password">Verify Password</label>
         <Field
           component={Input}
           type="password"

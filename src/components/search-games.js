@@ -24,15 +24,16 @@ export class SearchGames extends Component {
 
     return (
       <form onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}>
-        <label htmlFor="searchInput">Search Results for </label>
+        <label htmlFor="searchInput">Search Results for: </label>
         <Field
           name="searchInput"
           id="searchInput"
           type="text"
           component={Input}
           element="input"
-          placeholder="SEARCH"
+          placeholder="Search"
         />
+        <button>Search</button>
         {/* <label>Filtered by:</label>
           <button>A-Z</button>
           <button>Rating</button>

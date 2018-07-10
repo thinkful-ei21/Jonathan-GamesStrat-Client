@@ -6,13 +6,14 @@ import StratList from './strat-list';
 
 export class Game extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchOneGame(this.props.match.params.gameId));
+    const gameId = this.props.match.params.gameId;
+    this.props.dispatch(fetchOneGame(gameId));
   }
 
   checkLoggedIn() {
-    console.log(this.props);
+    const url = this.props.match.url;
     if (this.props.loggedIn) {
-      return <Link to={`${this.props.match.url}/addStrat`} />;
+      return <Link to={`${url}/addStrat`} />;
     }
   }
 
@@ -24,18 +25,28 @@ export class Game extends Component {
       return (
         <React.Fragment key={index}>
           {cover}
-          <span>{oneGame.name}</span>
-          <span>{oneGame.total_rating}</span>
+          <h3>{oneGame.name}</h3>
+          <span>Rating: {oneGame.total_rating}</span>
           <p>{oneGame.summary}</p>
         </React.Fragment>
       );
     });
-    return (
-      <React.Fragment>
-        {game}
+
+    let addButton;
+    if (this.props.loggedIn) {
+      addButton = (
         <Link to={`/addStrat/${this.props.match.params.gameId}`}>
           <button>+ New Strategy</button>
         </Link>
+      );
+    }
+    return (
+      <React.Fragment>
+        {game}
+        {addButton}
+        {/* <Link to={`/addStrat/${this.props.match.params.gameId}`}>
+          <button>+ New Strategy</button>
+        </Link> */}
         <h3>Strategies</h3>
         <StratList gameId={this.props.match.params.gameId} />
       </React.Fragment>
@@ -44,7 +55,7 @@ export class Game extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.oneGameRed);
+  // console.log(state.oneGameRed);
   return {
     game: state.oneGameRed.game,
     loggedIn: state.authRed.currentUser !== null

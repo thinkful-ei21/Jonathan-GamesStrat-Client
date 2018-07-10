@@ -12,25 +12,35 @@ export class Header extends Component {
 
   render() {
     let cornerButton;
-    if (this.props.loggedIn) {
-      cornerButton = (
-        <React.Fragment>
-          {/* <button>My Strategies</button> */}
-          <button onClick={() => this.onLogOut()}>LogOut</button>
-        </React.Fragment>
-      );
-    } else {
-      cornerButton = (
-        <Link to="/login">
-          <button>LogIn</button>
+    const location = this.props.location.pathname;
+    if (location !== '/' && location !== '/login' && location !== '/welcome') {
+      if (this.props.loggedIn) {
+        cornerButton = (
+          <React.Fragment>
+            {/* <button>My Strategies</button> */}
+            <button onClick={() => this.onLogOut()}>LogOut</button>
+          </React.Fragment>
+        );
+      } else {
+        cornerButton = (
+          <Link to="/login">
+            <button>LogIn</button>
+          </Link>
+        );
+      }
+    }
+
+    let title;
+    if (location !== '/' && location !== '/welcome') {
+      title = (
+        <Link to="/search">
+          <h1>GameStrat</h1>
         </Link>
       );
     }
     return (
       <section>
-        <Link to="/search">
-          <h1>GameStrat</h1>
-        </Link>
+        {title}
         {cornerButton}
       </section>
     );

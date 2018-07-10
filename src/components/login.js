@@ -8,7 +8,7 @@ import Input from './input';
 
 export class Login extends Component {
   onSubmit(values) {
-    this.props
+    return this.props
       .dispatch(login(values.loginUsername, values.loginPassword))
       .then(() => this.props.history.push('/search'));
   }
@@ -45,10 +45,6 @@ export class Login extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   loggedIn: state.authRed.currentUser !== null
-// });
 
 export default reduxForm({
   form: 'login',

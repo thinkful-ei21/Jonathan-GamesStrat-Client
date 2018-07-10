@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import requiresLogin from './requires-login';
 import { Link } from 'react-router-dom';
-import { saveStrat } from '../actions/save-strat';
 
+import requiresLogin from './requires-login';
+import { saveStrat } from '../actions/save-strat';
 import Input from './input';
 
 export class AddStrat extends Component {
   onSubmit(vals) {
     const gameId = this.props.match.params.gameId;
-    const { title, strat } = vals;
-    const newStrat = { title, strat, gameId };
-    this.props
+    const { title, content } = vals;
+    const newStrat = { title, content, gameId };
+    return this.props
       .dispatch(saveStrat(newStrat))
       .then(() => this.props.history.push(`/game/${gameId}`));
   }
@@ -19,25 +19,28 @@ export class AddStrat extends Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}>
+        <label htmlFor="title">Title</label>
         <Field
           name="title"
           id="title"
           type="text"
           component={Input}
           element="input"
-          label="Log Title"
-          placeholder="LOG TITLE"
         />
+        <label htmlFor="content">Strategy</label>
         <Field
-          name="strat"
-          id="strat"
+          name="content"
+          id="content"
           type="text"
           component={Input}
           element="textarea"
-          label="Strat"
-          placeholder="ADD STRAT HERE"
         />
-        <button>Save</button>
+        <button
+          type="submit"
+          disabled={this.props.pristine || this.props.submitting}
+        >
+          Save
+        </button>
         <Link to={`/game/${this.props.match.params.gameId}`}>
           <button>Cancel</button>
         </Link>
