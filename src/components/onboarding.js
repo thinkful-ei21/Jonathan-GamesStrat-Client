@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import requiresLogin from './requires-login';
 
 import '../styles/onboarding.css';
-import requiresLogin from './requires-login';
 
 export class Onboarding extends Component {
   render() {
     return (
       <section className="onboarding">
         <h1>Welcome to GameStrat</h1>
-        <section className="welcomeMsg">
+        <section role="article" className="welcomeMsg">
           <p>
             Now that you are a User, you will be able to contribute to the
             cause. You will now have the following privileges:

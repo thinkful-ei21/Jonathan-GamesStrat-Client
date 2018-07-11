@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import '../styles/landing-page.css';
 
 export default function Landing(props) {
   return (
     <section className="landingPage">
       <h1>Welcome to GameStrat</h1>
-      <section className="description">
+      <section role="article" className="description">
         <ul>
           <li>Looking for a way to beat that one boss?</li>
           <li>Can't seem to pass that one tricky level?</li>

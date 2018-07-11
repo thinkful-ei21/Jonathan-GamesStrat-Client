@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import '../styles/strat.css';
 import { deleteStrat } from '../actions/delete-strat';
 import { fetchOneStrat } from '../actions/strat';
 import { fetchOneGame } from '../actions/game';
+
+import '../styles/strat.css';
 
 export class Strat extends Component {
   componentDidMount() {
@@ -24,17 +25,25 @@ export class Strat extends Component {
       .then(() => this.props.history.push(`/game/${gameId}`));
   }
 
+  round(value) {
+    const numVal = Number(value);
+    return Math.round(100 * numVal) / 100;
+  }
+
   render() {
     const aStrat = this.props.strat;
     const game = this.props.game.map((oneGame, index) => {
       const cover = oneGame.cover ? (
         <img src={oneGame.cover.url} alt="cover of the game" />
       ) : null;
+      const rating = oneGame.total_rating
+        ? this.round(oneGame.total_rating)
+        : 'Not Rated';
       return (
         <div className="stratGame" key={index}>
           {cover}
           <h3>{oneGame.name}</h3>
-          <span>Rating: {oneGame.total_rating}</span>
+          <span>Rating: {rating}</span>
         </div>
       );
     });
@@ -52,12 +61,12 @@ export class Strat extends Component {
         {game}
         <div>
           <h3>{aStrat.title}</h3>
-          <spam>
+          <span>
             Created: {moment(aStrat.createdAt).format('MMMM, Do YYYY, h:mm a')}{' '}
-          </spam>
+          </span>
         </div>
         <p className="description">{aStrat.content}</p>
-        {/*<button>Edit</button>*/}
+        {/*<button>Edit</button>   <---- feature to come*/}
         {delButton}
       </section>
     );

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { reduxForm, Field, focus } from 'redux-form';
-import { Link } from 'react-router-dom';
-import { fetchGames, saveInputValue } from '../actions/game-search';
 import { connect } from 'react-redux';
-import '../styles/search-games.css';
+import { Link } from 'react-router-dom';
+import { reduxForm, Field, focus } from 'redux-form';
+
+import { fetchGames, saveInputValue } from '../actions/game-search';
 
 import Input from './input';
+
+import '../styles/search-games.css';
 
 export class SearchGames extends Component {
   onSubmit(vals) {
@@ -19,10 +21,18 @@ export class SearchGames extends Component {
         <img
           className="gameCover"
           src={game.cover.url}
+          width="100"
+          height="100"
           alt="cover of the game"
         />
       ) : (
-        <div className="missingImg">Game Image Missing</div>
+        <img
+          className="missingImg"
+          src="http://tsp.aceplace.net/core/plugins/gallery/images/missing-img.jpg"
+          width="100"
+          height="100"
+          alt="Missing Game Cover"
+        />
       );
       return (
         <Link className="game" to={`/game/${game.id}`} key={index}>
@@ -38,22 +48,26 @@ export class SearchGames extends Component {
 
     return (
       <form
+        role="search"
         className="searchForm"
         onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}
       >
-        <label className="searchLabel" htmlFor="searchInput">
-          Search Results for: {this.props.value}
-        </label>
-        <Field
-          name="searchInput"
-          id="searchInput"
-          type="text"
-          component={Input}
-          element="input"
-          placeholder="Search"
-        />
-        <button className="searchButton">Search</button>
-        {/* <label>Filtered by:</label>
+        <div className="gameSearchSearchBar">
+          <label className="searchLabel" htmlFor="searchInput">
+            Search Results for:
+            <span className="diplayedSearchValue"> {this.props.value}</span>
+          </label>
+          <div className="searhFeatures">
+            <Field
+              name="searchInput"
+              id="searchInput"
+              type="text"
+              component={Input}
+              element="input"
+              placeholder="Search"
+            />
+            <button className="searchButton">Search</button>
+            {/* <label>Filtered by:</label>
           <button>A-Z</button>
           <button>Rating</button>
           <select>
@@ -62,8 +76,9 @@ export class SearchGames extends Component {
             <option value="adventure">ADVENTURE</option>
             <option value="FPS">F.P.S.</option>
             <option value="MMO">M.M.O.</option>
-          </select> */}
-
+          </select> <------------------------feature to come*/}
+          </div>
+        </div>
         <ul className="gameList">{games}</ul>
       </form>
     );

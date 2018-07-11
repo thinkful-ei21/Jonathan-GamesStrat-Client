@@ -3,9 +3,10 @@ import { reduxForm, Field, focus } from 'redux-form';
 
 import { login } from '../actions/auth';
 import { required, nonEmpty } from '../validators';
-import '../styles/login.css';
 
 import Input from './input';
+
+import '../styles/login.css';
 
 export class Login extends Component {
   onSubmit(values) {
@@ -16,6 +17,7 @@ export class Login extends Component {
 
   render() {
     let error;
+    console.log(this.props);
     if (this.props.error) {
       error = (
         <div className="form-error" aria-live="polite">
@@ -25,6 +27,7 @@ export class Login extends Component {
     }
     return (
       <form
+        role="search"
         className="loginForm"
         onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}
       >

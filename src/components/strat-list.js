@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import '../styles/strat-list.css';
 import { fetchStrats } from '../actions/strat-list';
 import { deleteStrat } from '../actions/delete-strat';
+
+import '../styles/strat-list.css';
 
 export class StratList extends Component {
   componentDidMount() {
@@ -32,12 +33,8 @@ export class StratList extends Component {
         );
       }
       return (
-        <div className="stratDelRow">
-          <Link
-            className="strat"
-            key={index}
-            to={`/game/${gameId}/${strat.id}`}
-          >
+        <div className="stratDelRow" key={index}>
+          <Link className="strat" to={`/game/${gameId}/${strat.id}`}>
             <li className="listItem">
               <span className="stratTitle">Title: {strat.title}</span>
               <span className="user">Created by: {strat.userId.username}</span>

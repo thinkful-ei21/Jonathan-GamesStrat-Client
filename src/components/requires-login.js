@@ -10,7 +10,6 @@ export default () => Component => {
     } else if (!loggedIn) {
       return <Redirect to="/search" />;
     }
-
     return <Component {...passThroughProps} />;
   }
 

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { reduxForm, Field, focus } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { reduxForm, Field, focus } from 'redux-form';
 
-import '../styles/add-strat.css';
 import requiresLogin from './requires-login';
 import { saveStrat } from '../actions/save-strat';
+import { required, nonEmpty } from '../validators';
+
 import Input from './input';
+
+import '../styles/add-strat.css';
 
 export class AddStrat extends Component {
   onSubmit(vals) {
@@ -20,6 +23,7 @@ export class AddStrat extends Component {
   render() {
     return (
       <form
+        role="search"
         className="addStratForm"
         onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}
       >
@@ -33,6 +37,7 @@ export class AddStrat extends Component {
           type="text"
           component={Input}
           element="input"
+          validate={[required, nonEmpty]}
         />
         <label className="addStratLabel" htmlFor="content">
           Strategy
@@ -45,7 +50,7 @@ export class AddStrat extends Component {
           element="textarea"
         />
         <button
-          className="saveCancelButton"
+          className="saveCancelButton save"
           type="submit"
           disabled={this.props.pristine || this.props.submitting}
         >

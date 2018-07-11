@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
+
 import '../styles/header.css';
 
 export class Header extends Component {
@@ -18,7 +20,7 @@ export class Header extends Component {
       if (this.props.loggedIn) {
         cornerButton = (
           <React.Fragment>
-            {/* <button>My Strategies</button> */}
+            {/* <button>My Strategies</button> <----------feature to come*/}
             <button className="button" onClick={() => this.onLogOut()}>
               LogOut
             </button>
@@ -26,7 +28,7 @@ export class Header extends Component {
         );
       } else {
         cornerButton = (
-          <Link to="/login">
+          <Link role="navigation" to="/login">
             <button className="button">LogIn</button>
           </Link>
         );
@@ -38,13 +40,13 @@ export class Header extends Component {
       title = <h1 className="title">GameStrat</h1>;
     } else {
       title = (
-        <Link className="titleLink" to="/search">
+        <Link role="navigation" className="titleLink" to="/search">
           <h1 className="title">GameStrat</h1>
         </Link>
       );
     }
     return (
-      <header>
+      <header role="banner">
         {title}
         {cornerButton}
       </header>

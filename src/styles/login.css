@@ -17,18 +17,9 @@
   margin-bottom: 5px;
 }
 
-.form-error {
-  color: red;
-  font-weight: bolder;
-  text-align: center;
-  border: 2px solid red;
-  align-self: center;
-}
-
 .loginLabel {
   display: inline-block;
 }
-
 
 .loginButton {
   align-self: center;
@@ -50,7 +41,7 @@
   color: white;
 }
 
-#loginUsername #loginPassword {
+#loginUsername, #loginPassword {
   width: 100%;
   align-self: center;
   margin: 5px 0; 

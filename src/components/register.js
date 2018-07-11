@@ -4,7 +4,9 @@ import { reduxForm, Field, focus } from 'redux-form';
 import { registerUser } from '../actions/users';
 import { login } from '../actions/auth';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
+
 import Input from './input';
+
 import '../styles/register.css';
 
 const passwordLength = length({ min: 10, max: 72 });
@@ -23,6 +25,7 @@ export class Registration extends Component {
   render() {
     return (
       <form
+        role="search"
         className="registerForm"
         onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}
       >
@@ -30,11 +33,11 @@ export class Registration extends Component {
         <label className="registerLabel" htmlFor="firstName">
           First name
         </label>
-        <Field component={Input} type="text" name="firstName" />
+        <Field component={Input} type="text" name="firstName" id="firstName" />
         <label className="registerLabel" htmlFor="lastName">
           Last name
         </label>
-        <Field component={Input} type="text" name="lastName" />
+        <Field component={Input} type="text" name="lastName" id="lastName" />
         <label className="registerLabel" htmlFor="reg-username">
           Username
         </label>

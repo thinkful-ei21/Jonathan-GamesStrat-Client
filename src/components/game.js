@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { fetchOneGame } from '../actions/game';
+
+import StratList from './strat-list';
 
 import '../styles/game.css';
-import { fetchOneGame } from '../actions/game';
-import StratList from './strat-list';
 
 export class Game extends Component {
   componentDidMount() {
@@ -19,20 +21,39 @@ export class Game extends Component {
     }
   }
 
+  round(value) {
+    const numVal = Number(value);
+    return Math.round(100 * numVal) / 100;
+  }
+
   render() {
     const game = this.props.game.map((oneGame, index) => {
+      console.log(oneGame);
       const cover = oneGame.cover ? (
         <img
           className="coverImg"
           src={oneGame.cover.url}
+          width="100"
+          height="100"
           alt="cover of the game"
         />
-      ) : null;
+      ) : (
+        <img
+          className="missingImg"
+          src="http://tsp.aceplace.net/core/plugins/gallery/images/missing-img.jpg"
+          width="100"
+          height="100"
+          alt="Missing Game Cover"
+        />
+      );
+      const rating = oneGame.total_rating
+        ? this.round(oneGame.total_rating)
+        : 'Not Rated';
       return (
-        <div className="mainGame" key={index}>
+        <div role="article" className="mainGame" key={index}>
           {cover}
-          <h3>{oneGame.name}</h3>
-          <span>Rating: {oneGame.total_rating}</span>
+          <h3 className="titleOfGame">{oneGame.name}</h3>
+          <span className="rating">Rating: {rating}</span>
           <p className="description">{oneGame.summary}</p>
         </div>
       );
@@ -59,12 +80,9 @@ export class Game extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  // console.log(state.oneGameRed);
-  return {
-    game: state.oneGameRed.game,
-    loggedIn: state.authRed.currentUser !== null
-  };
-};
+const mapStateToProps = state => ({
+  game: state.oneGameRed.game,
+  loggedIn: state.authRed.currentUser !== null
+});
 
 export default connect(mapStateToProps)(Game);
