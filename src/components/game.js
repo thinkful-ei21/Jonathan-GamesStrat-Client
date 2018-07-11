@@ -28,7 +28,6 @@ export class Game extends Component {
 
   render() {
     const game = this.props.game.map((oneGame, index) => {
-      console.log(oneGame);
       const cover = oneGame.cover ? (
         <img
           className="coverImg"
