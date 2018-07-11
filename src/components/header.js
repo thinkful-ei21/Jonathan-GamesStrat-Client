@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
+import '../styles/header.css';
 
 export class Header extends Component {
   onLogOut() {
@@ -18,31 +19,35 @@ export class Header extends Component {
         cornerButton = (
           <React.Fragment>
             {/* <button>My Strategies</button> */}
-            <button onClick={() => this.onLogOut()}>LogOut</button>
+            <button className="button" onClick={() => this.onLogOut()}>
+              LogOut
+            </button>
           </React.Fragment>
         );
       } else {
         cornerButton = (
           <Link to="/login">
-            <button>LogIn</button>
+            <button className="button">LogIn</button>
           </Link>
         );
       }
     }
 
     let title;
-    if (location !== '/' && location !== '/welcome') {
+    if (location === '/' || location === '/welcome') {
+      title = <h1 className="title">GameStrat</h1>;
+    } else {
       title = (
-        <Link to="/search">
-          <h1>GameStrat</h1>
+        <Link className="titleLink" to="/search">
+          <h1 className="title">GameStrat</h1>
         </Link>
       );
     }
     return (
-      <section>
+      <header>
         {title}
         {cornerButton}
-      </section>
+      </header>
     );
   }
 }

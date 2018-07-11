@@ -18,6 +18,12 @@ export const fetchGamesError = err => ({
   err
 });
 
+export const SAVE_INPUT_VALUE = 'SAVE_INPUT_VALUE';
+export const saveInputValue = value => ({
+  type: SAVE_INPUT_VALUE,
+  value
+});
+
 export const fetchGames = _searchTerm => dispatch => {
   dispatch(fetchGamesRequest());
   const searchTerm = `/?search=${_searchTerm}`;

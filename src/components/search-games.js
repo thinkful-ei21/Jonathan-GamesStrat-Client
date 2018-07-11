@@ -1,30 +1,49 @@
 import React, { Component } from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
-import { fetchGames } from '../actions/game-search';
+import { Link } from 'react-router-dom';
+import { fetchGames, saveInputValue } from '../actions/game-search';
 import { connect } from 'react-redux';
+import '../styles/search-games.css';
 
 import Input from './input';
 
 export class SearchGames extends Component {
   onSubmit(vals) {
     this.props.dispatch(fetchGames(vals.searchInput));
+    this.props.dispatch(saveInputValue(vals.searchInput));
   }
 
   render() {
     const games = this.props.games.map((game, index) => {
       const cover = game.cover ? (
-        <img src={game.cover.url} alt="cover of the game" />
-      ) : null;
+        <img
+          className="gameCover"
+          src={game.cover.url}
+          alt="cover of the game"
+        />
+      ) : (
+        <div className="missingImg">Game Image Missing</div>
+      );
       return (
-        <li key={index}>
-          <a href={`/game/${game.id}`}>{game.name} </a> {cover}
-        </li>
+        <Link className="game" to={`/game/${game.id}`} key={index}>
+          <li className="gameListItem">
+            {cover}
+            <div className="gameInfo">
+              <h3 className="gameTitle">{game.name}</h3>
+            </div>
+          </li>
+        </Link>
       );
     });
 
     return (
-      <form onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}>
-        <label htmlFor="searchInput">Search Results for: </label>
+      <form
+        className="searchForm"
+        onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}
+      >
+        <label className="searchLabel" htmlFor="searchInput">
+          Search Results for: {this.props.value}
+        </label>
         <Field
           name="searchInput"
           id="searchInput"
@@ -33,7 +52,7 @@ export class SearchGames extends Component {
           element="input"
           placeholder="Search"
         />
-        <button>Search</button>
+        <button className="searchButton">Search</button>
         {/* <label>Filtered by:</label>
           <button>A-Z</button>
           <button>Rating</button>
@@ -45,14 +64,15 @@ export class SearchGames extends Component {
             <option value="MMO">M.M.O.</option>
           </select> */}
 
-        <ul>{games}</ul>
+        <ul className="gameList">{games}</ul>
       </form>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  games: state.gamesRed.games
+  games: state.gamesRed.games,
+  value: state.gamesRed.value
 });
 
 SearchGames = connect(mapStateToProps)(SearchGames);

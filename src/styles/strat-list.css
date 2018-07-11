@@ -1,0 +1,94 @@
+.stratList {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  padding: 0;
+}
+
+.stratDelRow {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightgray;
+  margin: 5px 0;
+}
+.strat {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+  text-decoration: none;
+}
+
+.stratDelRow:hover {
+  border: 2px solid red
+}
+
+.stratTitle {
+  list-style-type: none;
+  list-style: none;
+  height: auto;
+  margin: 5px;
+  flex: 1 0;
+  display: relative;
+  color: black;
+}
+
+.user {
+  list-style-type: none;
+  list-style: none;
+  height: auto;
+  margin: 5px;
+  flex: 1 0;
+  display: relative;
+  color: black;
+}
+
+.listItem {
+  line-height: 1;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+.gameTitle {
+  display: relative;
+  color: black;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  text-align: center;
+}
+
+.gameInfo {
+  background-color: beige;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+.delButton {
+  align-self: center;
+  border: 1px solid #e81c4f;
+  border-radius: 290486px;
+  color: black;
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  padding: 1em ;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none 200ms ease-out;
+  transition-property: color, background;
+  margin: 10px 0 10px 0;
+  text-decoration: none;
+}
+
+.delButton:hover {
+  background:  #e81c4f;
+  color: white;
+}

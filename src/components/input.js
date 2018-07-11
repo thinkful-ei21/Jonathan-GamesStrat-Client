@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../styles/input.css';
+
 export default class Input extends React.Component {
   render() {
     const Element = this.props.element || 'input';
@@ -9,7 +11,7 @@ export default class Input extends React.Component {
       error = <div className="form-error">{this.props.meta.error}</div>;
     }
     return (
-      <div>
+      <React.Fragment>
         {error}
         <Element
           {...this.props.input}
@@ -17,10 +19,12 @@ export default class Input extends React.Component {
           type={this.props.type}
           element={this.props.element}
           placeholder={this.props.placeholder}
+          ref={input => (this.input = input)}
+          autoComplete="off"
         >
           {this.props.children}
         </Element>
-      </div>
+      </React.Fragment>
     );
   }
 }

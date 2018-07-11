@@ -15,16 +15,46 @@ import Onboarding from './onboarding';
 export default class GameStrat extends Component {
   render() {
     return (
-      <section>
-        <Route path="/" component={Header} />
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/login" component={Register} />
-        <Route exact path="/welcome" component={Onboarding} />
-        <Route exact path="/search" component={SearchGames} />
-        <Route exact path="/game/:gameId" component={Game} />
-        <Route exact path="/game/:gameId/:stratId" component={Strat} />
-        <Route exact path="/addStrat/:gameId" component={AddStrat} />
+      <section className="gameStrat">
+        <Route className="header" path="/" component={Header} />
+        <Route className="landing col" exact path="/" component={Landing} />
+        <Route className="login col" exact path="/login" component={Login} />
+        <Route
+          className="register col"
+          exact
+          path="/login"
+          component={Register}
+        />
+        <Route
+          className="onboarding col"
+          exact
+          path="/welcome"
+          component={Onboarding}
+        />
+        <Route
+          className="searchGames col"
+          exact
+          path="/search"
+          component={SearchGames}
+        />
+        <Route
+          className="game col"
+          exact
+          path="/game/:gameId"
+          component={Game}
+        />
+        <Route
+          className="strat col"
+          exact
+          path="/game/:gameId/:stratId"
+          component={Strat}
+        />
+        <Route
+          className="addStrat col"
+          exact
+          path="/addStrat/:gameId"
+          component={AddStrat}
+        />
       </section>
     );
   }

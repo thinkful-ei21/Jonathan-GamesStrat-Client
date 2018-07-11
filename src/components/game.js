@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import '../styles/game.css';
 import { fetchOneGame } from '../actions/game';
 import StratList from './strat-list';
 
@@ -20,15 +22,19 @@ export class Game extends Component {
   render() {
     const game = this.props.game.map((oneGame, index) => {
       const cover = oneGame.cover ? (
-        <img src={oneGame.cover.url} alt="cover of the game" />
+        <img
+          className="coverImg"
+          src={oneGame.cover.url}
+          alt="cover of the game"
+        />
       ) : null;
       return (
-        <React.Fragment key={index}>
+        <div className="mainGame" key={index}>
           {cover}
           <h3>{oneGame.name}</h3>
           <span>Rating: {oneGame.total_rating}</span>
-          <p>{oneGame.summary}</p>
-        </React.Fragment>
+          <p className="description">{oneGame.summary}</p>
+        </div>
       );
     });
 
@@ -36,20 +42,19 @@ export class Game extends Component {
     if (this.props.loggedIn) {
       addButton = (
         <Link to={`/addStrat/${this.props.match.params.gameId}`}>
-          <button>+ New Strategy</button>
+          <button className="newButton">+ New Strategy</button>
         </Link>
       );
     }
     return (
-      <React.Fragment>
+      <section className="gamePage">
         {game}
-        {addButton}
-        {/* <Link to={`/addStrat/${this.props.match.params.gameId}`}>
-          <button>+ New Strategy</button>
-        </Link> */}
-        <h3>Strategies</h3>
+        <div className="stratListHeader">
+          <h3>Strategies</h3>
+          {addButton}
+        </div>
         <StratList gameId={this.props.match.params.gameId} />
-      </React.Fragment>
+      </section>
     );
   }
 }

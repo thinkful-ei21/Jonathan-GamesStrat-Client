@@ -5,6 +5,7 @@ import { registerUser } from '../actions/users';
 import { login } from '../actions/auth';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 import Input from './input';
+import '../styles/register.css';
 
 const passwordLength = length({ min: 10, max: 72 });
 const matchesPassword = matches('password');
@@ -21,13 +22,22 @@ export class Registration extends Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}>
-        <h3>Register</h3>
-        <label htmlFor="firstName">First name</label>
+      <form
+        className="registerForm"
+        onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}
+      >
+        <h3>REGISTER</h3>
+        <label className="registerLabel" htmlFor="firstName">
+          First name
+        </label>
         <Field component={Input} type="text" name="firstName" />
-        <label htmlFor="lastName">Last name</label>
+        <label className="registerLabel" htmlFor="lastName">
+          Last name
+        </label>
         <Field component={Input} type="text" name="lastName" />
-        <label htmlFor="reg-username">Username</label>
+        <label className="registerLabel" htmlFor="reg-username">
+          Username
+        </label>
         <Field
           component={Input}
           type="text"
@@ -35,7 +45,9 @@ export class Registration extends Component {
           id="username"
           validate={[required, nonEmpty, isTrimmed]}
         />
-        <label htmlFor="reg-password">Password</label>
+        <label className="registerLabel" htmlFor="reg-password">
+          Password
+        </label>
         <Field
           component={Input}
           type="password"
@@ -43,7 +55,9 @@ export class Registration extends Component {
           id="password"
           validate={[required, passwordLength, isTrimmed]}
         />
-        <label htmlFor="validate-password">Verify Password</label>
+        <label className="registerLabel" htmlFor="validate-password">
+          Verify Password
+        </label>
         <Field
           component={Input}
           type="password"
@@ -52,6 +66,7 @@ export class Registration extends Component {
           validate={[required, nonEmpty, matchesPassword]}
         />
         <button
+          className="registerButton"
           type="submit"
           disabled={this.props.pristine || this.props.submitting}
         >

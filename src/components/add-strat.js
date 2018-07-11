@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
 import { Link } from 'react-router-dom';
 
+import '../styles/add-strat.css';
 import requiresLogin from './requires-login';
 import { saveStrat } from '../actions/save-strat';
 import Input from './input';
@@ -18,8 +19,14 @@ export class AddStrat extends Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}>
-        <label htmlFor="title">Title</label>
+      <form
+        className="addStratForm"
+        onSubmit={this.props.handleSubmit(vals => this.onSubmit(vals))}
+      >
+        <h3>Add a New Strategy</h3>
+        <label className="addStratLabel" htmlFor="title">
+          Title
+        </label>
         <Field
           name="title"
           id="title"
@@ -27,7 +34,9 @@ export class AddStrat extends Component {
           component={Input}
           element="input"
         />
-        <label htmlFor="content">Strategy</label>
+        <label className="addStratLabel" htmlFor="content">
+          Strategy
+        </label>
         <Field
           name="content"
           id="content"
@@ -36,13 +45,14 @@ export class AddStrat extends Component {
           element="textarea"
         />
         <button
+          className="saveCancelButton"
           type="submit"
           disabled={this.props.pristine || this.props.submitting}
         >
           Save
         </button>
         <Link to={`/game/${this.props.match.params.gameId}`}>
-          <button>Cancel</button>
+          <button className="saveCancelButton cancel">Cancel</button>
         </Link>
       </form>
     );

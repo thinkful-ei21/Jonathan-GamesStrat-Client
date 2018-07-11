@@ -1,0 +1,65 @@
+.gamePage {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content:center;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  max-width: 700px;
+  min-width: 300px;
+  line-height: 1.5;
+  padding: 20px;
+  color: #555;
+  background: beige;
+}
+
+.mainGame {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+h3 {
+  margin-top: 1em;
+  font-size: 32px;
+  font-weight: 300%;
+  color: #333;
+}
+
+.description {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+  color: #333;
+}
+
+.stratListHeader {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.newButton {
+  align-self: center;
+  border: 1px solid #e81c4f;
+  border-radius: 290486px;
+  color: black;
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  padding: 1em 2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none 200ms ease-out;
+  transition-property: color, background;
+  margin: 10px 0 10px 0;
+}
+
+.newButton:hover {
+  background:  #e81c4f;
+  color: white;
+}

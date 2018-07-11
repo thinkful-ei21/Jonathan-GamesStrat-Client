@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
+import '../styles/strat.css';
 import { deleteStrat } from '../actions/delete-strat';
 import { fetchOneStrat } from '../actions/strat';
 import { fetchOneGame } from '../actions/game';
@@ -30,26 +31,32 @@ export class Strat extends Component {
         <img src={oneGame.cover.url} alt="cover of the game" />
       ) : null;
       return (
-        <React.Fragment key={index}>
+        <div className="stratGame" key={index}>
           {cover}
           <h3>{oneGame.name}</h3>
           <span>Rating: {oneGame.total_rating}</span>
-        </React.Fragment>
+        </div>
       );
     });
 
     let delButton;
     if (this.props.loggedIn && this.props.user.id === aStrat.userId) {
-      delButton = <button onClick={() => this.deleteStrat()}>Delete</button>;
+      delButton = (
+        <button className="stratDelButton" onClick={() => this.deleteStrat()}>
+          Delete
+        </button>
+      );
     }
     return (
-      <section>
+      <section className="stratPage">
         {game}
-        <h3>{aStrat.title}</h3>
-        <h4>
-          Created: {moment(aStrat.createdAt).format('MMMM, Do YYYY, h:mm a')}{' '}
-        </h4>
-        <p>{aStrat.content}</p>
+        <div>
+          <h3>{aStrat.title}</h3>
+          <spam>
+            Created: {moment(aStrat.createdAt).format('MMMM, Do YYYY, h:mm a')}{' '}
+          </spam>
+        </div>
+        <p className="description">{aStrat.content}</p>
         {/*<button>Edit</button>*/}
         {delButton}
       </section>

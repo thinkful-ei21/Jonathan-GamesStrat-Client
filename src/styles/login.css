@@ -1,0 +1,57 @@
+.loginForm {
+  box-sizing: border-box;
+  background-color: beige;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content:center;
+  margin: 50px auto;
+  width: 50%;
+  max-width: 500px;
+  min-width: 300px;
+  padding: 0 50px;
+  border: 0
+}
+
+.loginForm h3 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.form-error {
+  color: red;
+  font-weight: bolder;
+  text-align: center;
+  border: 2px solid red;
+  align-self: center;
+}
+
+.loginLabel {
+  display: inline-block;
+}
+
+
+.loginButton {
+  align-self: center;
+  border: 1px solid #e81c4f;
+  border-radius: 290486px;
+  color: black;
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  padding: 1em 2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: none 200ms ease-out;
+  transition-property: color, background;
+  margin: 10px 0 10px 0;
+}
+
+.loginButton:hover {
+  background:  #e81c4f;
+  color: white;
+}
+
+#loginUsername #loginPassword {
+  width: 100%;
+  align-self: center;
+  margin: 5px 0; 
+}

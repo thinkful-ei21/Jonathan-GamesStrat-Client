@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import '../styles/strat-list.css';
 import { fetchStrats } from '../actions/strat-list';
 import { deleteStrat } from '../actions/delete-strat';
 
@@ -21,18 +23,31 @@ export class StratList extends Component {
       let delButton;
       if (this.props.loggedIn && this.props.user.id === strat.userId.id) {
         delButton = (
-          <button onClick={() => this.deleteStrat(strat.id)}>Delete</button>
+          <button
+            className="delButton"
+            onClick={() => this.deleteStrat(strat.id)}
+          >
+            Del
+          </button>
         );
       }
       return (
-        <li key={index}>
-          <Link to={`/game/${gameId}/${strat.id}`}>{strat.title}</Link>
-          {strat.userId.username}
+        <div className="stratDelRow">
+          <Link
+            className="strat"
+            key={index}
+            to={`/game/${gameId}/${strat.id}`}
+          >
+            <li className="listItem">
+              <span className="stratTitle">Title: {strat.title}</span>
+              <span className="user">Created by: {strat.userId.username}</span>
+            </li>
+          </Link>
           {delButton}
-        </li>
+        </div>
       );
     });
-    return <ul>{strats}</ul>;
+    return <ul className="stratList">{strats}</ul>;
   }
 }
 
