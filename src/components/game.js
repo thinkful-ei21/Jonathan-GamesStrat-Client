@@ -7,11 +7,21 @@ import { fetchOneGame } from '../actions/game';
 import StratList from './strat-list';
 
 import '../styles/game.css';
+import noCover from '../images/noCover.png';
 
 export class Game extends Component {
   componentDidMount() {
     const gameId = this.props.match.params.gameId;
     this.props.dispatch(fetchOneGame(gameId));
+  }
+
+  goBack(e) {
+    e.preventDefault();
+    const prevLocation = this.props.history.location.pathname;
+    if (prevLocation !== `/addStrat/${this.props.match.params.gameId}`) {
+      return this.props.history.push('/search');
+    }
+    return window.history.back();
   }
 
   checkLoggedIn() {
@@ -33,15 +43,15 @@ export class Game extends Component {
           className="coverImg"
           src={oneGame.cover.url}
           width="100"
-          height="100"
+          height="125"
           alt="cover of the game"
         />
       ) : (
         <img
           className="missingImg"
-          src="http://tsp.aceplace.net/core/plugins/gallery/images/missing-img.jpg"
+          src={noCover}
           width="100"
-          height="100"
+          height="125"
           alt="Missing Game Cover"
         />
       );
@@ -71,7 +81,12 @@ export class Game extends Component {
         {game}
         <div className="stratListHeader">
           <h3>Strategies</h3>
-          {addButton}
+          <div className="buttons">
+            {addButton}
+            <button className="backButton" onClick={e => this.goBack(e)}>
+              Back
+            </button>
+          </div>
         </div>
         <StratList gameId={this.props.match.params.gameId} />
       </section>

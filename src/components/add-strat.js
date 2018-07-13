@@ -49,25 +49,25 @@ export class AddStrat extends Component {
           component={Input}
           element="textarea"
         />
-        <button
-          className="saveCancelButton save"
-          type="submit"
-          disabled={this.props.pristine || this.props.submitting}
-        >
-          Save
-        </button>
-        <Link to={`/game/${this.props.match.params.gameId}`}>
-          <button className="saveCancelButton cancel">Cancel</button>
-        </Link>
+        <div className="ASButtons">
+          <button
+            className="saveCancelButton save"
+            type="submit"
+            disabled={this.props.pristine || this.props.submitting}
+          >
+            Save
+          </button>
+          <Link to={`/game/${this.props.match.params.gameId}`}>
+            <button className="saveCancelButton cancel">Cancel</button>
+          </Link>
+        </div>
       </form>
     );
   }
 }
 
-AddStrat = requiresLogin()(AddStrat);
-
 export default reduxForm({
   form: 'strat',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('strat', Object.keys(errors)[0]))
-})(AddStrat);
+})(requiresLogin()(AddStrat));

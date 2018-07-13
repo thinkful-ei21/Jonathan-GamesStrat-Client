@@ -2,7 +2,8 @@ import {
   FETCH_GAMES_REQUEST,
   FETCH_GAMES_SUCCESS,
   FETCH_GAMES_ERROR,
-  SAVE_INPUT_VALUE
+  SAVE_INPUT_VALUE,
+  CLEAR_INPUT_VALUE
 } from '../actions/game-search';
 
 const initalState = {
@@ -35,6 +36,12 @@ const gamesReducer = (state = initalState, action) => {
     };
   }
   if (action.type === SAVE_INPUT_VALUE) {
+    return {
+      ...state,
+      value: action.value
+    };
+  }
+  if (action.type === CLEAR_INPUT_VALUE) {
     return {
       ...state,
       value: action.value

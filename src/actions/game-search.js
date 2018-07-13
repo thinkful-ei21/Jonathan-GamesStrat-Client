@@ -24,12 +24,22 @@ export const saveInputValue = value => ({
   value
 });
 
+export const CLEAR_INPUT_VALUE = 'CLEAR_INPUT_VALUE';
+export const clearInputValue = value => ({
+  type: CLEAR_INPUT_VALUE,
+  value
+});
+
 export const fetchGames = _searchTerm => dispatch => {
   dispatch(fetchGamesRequest());
-  const searchTerm = `/?search=${_searchTerm}`;
-  fetch(`${API_BASE_URL}/games${searchTerm}`, { method: 'GET' })
+  const searchTerm = _searchTerm ? `/?search=${_searchTerm}` : '/';
+  fetch(`${API_BASE_URL}/games${searchTerm}`, {
+    method: 'GET'
+  })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
+    .then(res => {
+      return res.json();
+    })
     .then(data => {
       dispatch(fetchGamesSuccess(data));
     })

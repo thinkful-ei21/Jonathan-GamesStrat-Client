@@ -1,15 +1,11 @@
 header {
   background-color: #263d36;
-  background-image: url("https://www.obilisk.co/wp-content/uploads/2017/07/Link-Header-888x555.jpg");
+  background-image: url(../images/Link-Header.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   line-height: 1.2;
   padding: 10px;
-}
-
-.titleLink {
-  text-decoration: none;
 }
 
 .title {
@@ -20,7 +16,12 @@ header {
   margin-left: 20px
 }
 
+.headerSearchButton {
+  margin-top: 75px
+}
+
 .button {
+  background-color: rgb(221, 221, 221);
   border: 1px solid #e81c4f;
   border-radius: 290486px;
   color: black;
@@ -33,7 +34,12 @@ header {
   transition-property: color, background;
   position: absolute;
   top: 25px;
-  right: 25px
+  right: 25px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline-style: none; 
 }
 
 .button:hover {

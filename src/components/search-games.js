@@ -8,11 +8,16 @@ import { fetchGames, saveInputValue } from '../actions/game-search';
 import Input from './input';
 
 import '../styles/search-games.css';
+import noCover from '../images/noCover.png';
 
 export class SearchGames extends Component {
   onSubmit(vals) {
-    this.props.dispatch(fetchGames(vals.searchInput));
-    this.props.dispatch(saveInputValue(vals.searchInput));
+    if (!vals.searchInput) {
+      return;
+    } else {
+      this.props.dispatch(fetchGames(vals.searchInput));
+      this.props.dispatch(saveInputValue(vals.searchInput));
+    }
   }
 
   render() {
@@ -22,15 +27,15 @@ export class SearchGames extends Component {
           className="gameCover"
           src={game.cover.url}
           width="100"
-          height="100"
+          height="125"
           alt="cover of the game"
         />
       ) : (
         <img
           className="missingImg"
-          src="http://tsp.aceplace.net/core/plugins/gallery/images/missing-img.jpg"
+          src={noCover}
           width="100"
-          height="100"
+          height="125"
           alt="Missing Game Cover"
         />
       );
@@ -45,6 +50,10 @@ export class SearchGames extends Component {
         </Link>
       );
     });
+    let displayVal;
+    if (!this.props.value) {
+      displayVal = <p className="missingSearch"> PLEASE ENTER A SEARCH </p>;
+    }
 
     return (
       <form
@@ -67,18 +76,9 @@ export class SearchGames extends Component {
               placeholder="Search"
             />
             <button className="searchButton">Search</button>
-            {/* <label>Filtered by:</label>
-          <button>A-Z</button>
-          <button>Rating</button>
-          <select>
-            <option value="">GENRE</option>
-            <option value="action">ACTION</option>
-            <option value="adventure">ADVENTURE</option>
-            <option value="FPS">F.P.S.</option>
-            <option value="MMO">M.M.O.</option>
-          </select> <------------------------feature to come*/}
           </div>
         </div>
+        {displayVal}
         <ul className="gameList">{games}</ul>
       </form>
     );
@@ -90,10 +90,10 @@ const mapStateToProps = state => ({
   value: state.gamesRed.value
 });
 
-SearchGames = connect(mapStateToProps)(SearchGames);
+const searchGames = connect(mapStateToProps)(SearchGames);
 
 export default reduxForm({
   form: 'search',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('search', Object.keys(errors)[0]))
-})(SearchGames);
+})(searchGames);

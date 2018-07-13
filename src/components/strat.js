@@ -17,6 +17,11 @@ export class Strat extends Component {
       .then(() => this.props.dispatch(fetchOneGame(gameId)));
   }
 
+  goBack(e) {
+    e.preventDefault();
+    return window.history.back();
+  }
+
   deleteStrat() {
     const stratId = this.props.match.params.stratId;
     const gameId = this.props.match.params.gameId;
@@ -61,12 +66,17 @@ export class Strat extends Component {
         {game}
         <div>
           <h3>{aStrat.title}</h3>
-          <span>
-            Created: {moment(aStrat.createdAt).format('MMMM, Do YYYY, h:mm a')}{' '}
-          </span>
+          <div className="createdBackButtonRow">
+            <span>
+              Created:{' '}
+              {moment(aStrat.createdAt).format('MMMM, Do YYYY, h:mm a')}{' '}
+            </span>
+            <button className="backButton" onClick={e => this.goBack(e)}>
+              Back
+            </button>
+          </div>
         </div>
         <p className="description">{aStrat.content}</p>
-        {/*<button>Edit</button>   <---- feature to come*/}
         {delButton}
       </section>
     );

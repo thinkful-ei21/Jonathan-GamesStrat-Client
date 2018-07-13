@@ -14,20 +14,29 @@ export class Header extends Component {
   }
 
   render() {
-    let cornerButton;
     const location = this.props.location.pathname;
-    if (location !== '/' && location !== '/login' && location !== '/welcome') {
+    let searchButton;
+    if (location !== '/' && location !== '/search' && location !== '/welcome') {
+      searchButton = (
+        <Link role="navigation" to="/search">
+          <button className="button headerSearchButton">Search</button>
+        </Link>
+      );
+    }
+
+    let cornerButtons;
+
+    if (location !== '/login' && location !== '/welcome') {
       if (this.props.loggedIn) {
-        cornerButton = (
+        cornerButtons = (
           <React.Fragment>
-            {/* <button>My Strategies</button> <----------feature to come*/}
             <button className="button" onClick={() => this.onLogOut()}>
               LogOut
             </button>
           </React.Fragment>
         );
       } else {
-        cornerButton = (
+        cornerButtons = (
           <Link role="navigation" to="/login">
             <button className="button">LogIn</button>
           </Link>
@@ -35,20 +44,11 @@ export class Header extends Component {
       }
     }
 
-    let title;
-    if (location === '/' || location === '/welcome') {
-      title = <h1 className="title">GameStrat</h1>;
-    } else {
-      title = (
-        <Link role="navigation" className="titleLink" to="/search">
-          <h1 className="title">GameStrat</h1>
-        </Link>
-      );
-    }
     return (
       <header role="banner">
-        {title}
-        {cornerButton}
+        <h1 className="title">GameStrat</h1>;
+        {searchButton}
+        {cornerButtons}
       </header>
     );
   }

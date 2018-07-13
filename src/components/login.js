@@ -17,7 +17,6 @@ export class Login extends Component {
 
   render() {
     let error;
-    console.log(this.props);
     if (this.props.error) {
       error = (
         <div className="form-error" aria-live="polite">

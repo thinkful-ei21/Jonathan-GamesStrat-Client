@@ -10,7 +10,7 @@ export class Onboarding extends Component {
   render() {
     return (
       <section className="onboarding">
-        <h1>Welcome to GameStrat</h1>
+        <h1 className="OBWelcomeMsg">Welcome to GameStrat</h1>
         <section role="article" className="welcomeMsg">
           <p>
             Now that you are a User, you will be able to contribute to the
@@ -33,10 +33,8 @@ export class Onboarding extends Component {
   }
 }
 
-Onboarding = requiresLogin()(Onboarding);
-
 const mapStateToProps = state => ({
   loggedIn: state.authRed.currentUser !== null
 });
 
-export default connect(mapStateToProps)(Onboarding);
+export default connect(mapStateToProps)(requiresLogin()(Onboarding));

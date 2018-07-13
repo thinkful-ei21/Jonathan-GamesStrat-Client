@@ -54,7 +54,7 @@
 
 
 
-.newButton {
+.newButton, .backButton {
   align-self: center;
   border: 1px solid #e81c4f;
   border-radius: 290486px;
@@ -67,9 +67,17 @@
   transition: none 200ms ease-out;
   transition-property: color, background;
   margin: 10px;
+  cursor: pointer;
 }
 
-.newButton:hover {
+.newButton:hover, .backButton:hover {
   background:  #e81c4f;
   color: white;
+}
+
+.link {
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
 }

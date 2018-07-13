@@ -6,7 +6,7 @@ import '../styles/landing-page.css';
 export default function Landing(props) {
   return (
     <section className="landingPage">
-      <h1>Welcome to GameStrat</h1>
+      <h1 className="LPWelcomeMsg">Welcome to GameStrat</h1>
       <section role="article" className="description">
         <ul>
           <li>Looking for a way to beat that one boss?</li>
@@ -24,9 +24,6 @@ export default function Landing(props) {
       <div className="buttons">
         <Link className="buttonLinks" to="/search">
           <button className="actualButtons">Search Games</button>
-        </Link>
-        <Link className="buttonLinks" to="/login">
-          <button className="actualButtons">Login/Register</button>
         </Link>
       </div>
     </section>

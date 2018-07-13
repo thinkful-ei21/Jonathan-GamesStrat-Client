@@ -12,6 +12,7 @@
   align-items: center;
   background-color: lightgray;
   margin: 5px 0;
+  border: 2px solid transparent
 }
 .strat {
   display: flex;

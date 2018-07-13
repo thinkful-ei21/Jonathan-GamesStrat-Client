@@ -42,15 +42,27 @@
   transition: none 200ms ease-out;
   transition-property: color, background;
   margin: 10px 0 10px 0;
+  cursor: pointer;
+}
+
+.ASButtons {
+  display: flex;
+  justify-content: space-around
 }
 
 .cancel {
   float: right;
+  border: 1px solid gray;
 }
 
 .saveCancelButton:hover {
   background:  #e81c4f;
   color: white;
+}
+
+.cancel:hover {
+  background:  lightgray;
+  color: red;
 }
 
 #title, #content {

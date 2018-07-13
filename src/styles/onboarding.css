@@ -10,16 +10,21 @@
   padding: 20px;
   color: #555;
   background: beige;
+  text-align: center;
+  box-shadow:  5px 10px rgb(65, 134, 0);
+  border-radius: 10px;
 }
 
-h1 {
-  margin-top: 1em;
+.OBWelcomeMsg {
+  margin-top: 10px;
+  margin-bottom: 15px;
   font-size: 2.5em;
   font-weight: 300%;
   color: #333;
 }
 
 .welcomeMsg {
+  text-align: left;
   padding: 2px 4px;
   vertical-align: text-bottom;
   color: #333;
