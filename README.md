@@ -22,8 +22,10 @@ cause. You will now have the following privileges:
 Let the collaboration begin...!
 
 __________________________
-## Below is a link to live app:
-https://jonathan-gamestrat-client.herokuapp.com/
+## Below are links to the live app and GitHub Repo for the server side:
+* Live App: https://jonathan-gamestrat-client.herokuapp.com/
+
+* Server Repo https://github.com/thinkful-ei21/Jonathan-GamesStrat-Server
 
 __________________________
 ## Screenshots of the Game
@@ -106,3 +108,10 @@ __________________________
 * Routes
 * Tests
 * Server - (index.js)
+
+## Dev Setup:
+
+* Clone both reops (this one and https://github.com/thinkful-ei21/Jonathan-GamesStrat-Server)
+
+* Once you have them cloned run `npm install` on both in order to get all dependancies.
+
