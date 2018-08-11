@@ -23,9 +23,9 @@ Let the collaboration begin...!
 
 __________________________
 ## Below are links to the live app and GitHub Repo for the server side:
-* Live App: https://jonathan-gamestrat-client.herokuapp.com/
+* [Live App](https://jonathan-gamestrat-client.herokuapp.com/)
 
-* Server Repo https://github.com/thinkful-ei21/Jonathan-GamesStrat-Server
+* [Server Repo](https://github.com/thinkful-ei21/Jonathan-GamesStrat-Server)
 
 __________________________
 ## Screenshots of the Game
@@ -88,7 +88,7 @@ __________________________
 * Morgan
 * Passport
 * JSONWedToken
-* bcryptjs
+* Bcryptjs
 __________________________
 ## Project's Key Parts Locations
 
@@ -111,7 +111,7 @@ __________________________
 
 ## Dev Setup:
 
-* Clone both reops (this one and https://github.com/thinkful-ei21/Jonathan-GamesStrat-Server)
+* Clone both reops (this one and the [Server Repo](https://github.com/thinkful-ei21/Jonathan-GamesStrat-Server))
 
 * Once you have them cloned run `npm install` on both in order to get all dependancies.
 
