@@ -1,6 +1,6 @@
 .loginForm {
   box-sizing: border-box;
-  background-color: beige;
+  background-color: #74A696;
   display: flex;
   flex-flow: column wrap;
   justify-content:center;
@@ -23,9 +23,10 @@
 
 .loginButton {
   align-self: center;
-  border: 1px solid #e81c4f;
+  background-color: #A7D9C9;
+  border: 1px solid #5A786E;
   border-radius: 290486px;
-  color: black;
+  color: #0B261E;
   font-size: 0.6em;
   letter-spacing: 0.2em;
   padding: 1em 2em;
@@ -37,8 +38,8 @@
 }
 
 .loginButton:hover {
-  background:  #e81c4f;
-  color: white;
+  background:  #263d36;
+  color: #A7D9C9;
 }
 
 #loginUsername, #loginPassword {

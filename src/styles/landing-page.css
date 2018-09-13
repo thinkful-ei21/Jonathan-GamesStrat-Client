@@ -8,10 +8,10 @@
   min-width: 300px;
   line-height: 1.5;
   padding: 20px;
-  color: #555;
-  background: beige;
+  color: #0B261E;
+  background: #74A696;
   text-align: center;
-  box-shadow:  5px 10px rgb(65, 134, 0);
+  box-shadow:  5px 10px #0B261E;
   border-radius: 10px;
 }
 
@@ -20,15 +20,15 @@
   margin-bottom: 15px;
   font-size: 2.5em;
   font-weight: 300%;
-  color: #333;
+  color: #0B261E;
   
 }
 
-.description {
+.description p, .description li {
   text-align: left;
   padding: 2px 4px;
   vertical-align: text-bottom;
-  color: #333;
+  color: #0B261E;
 }
 
 .buttons {
@@ -38,9 +38,10 @@
 
 .actualButtons {
   align-self: center;
-  border: 1px solid #e81c4f;
+  background-color: #A7D9C9;
+  border: 1px solid #5A786E;
   border-radius: 290486px;
-  color: black;
+  color: #0B261E;
   font-size: 0.6em;
   letter-spacing: 0.2em;
   padding: 1em 2em;
@@ -52,7 +53,7 @@
 }
 
 .actualButtons:hover {
-  background:  #e81c4f;
-  color: white;
+  background:  #263d36;
+  color: #A7D9C9;
 }
 

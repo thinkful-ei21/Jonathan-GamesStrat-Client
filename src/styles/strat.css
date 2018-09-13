@@ -9,8 +9,8 @@
   min-width: 300px;
   line-height: 1.5;
   padding: 20px;
-  color: #555;
-  background: beige;
+  color: #0B261E;
+  background: #5A786E;
 }
 
 .stratGame {
@@ -29,20 +29,21 @@ h3 {
   margin-top: 1em;
   font-size: 32px;
   font-weight: 300%;
-  color: #333;
+  color: #0B261E;
 }
 
 .description {
   padding: 2px 4px;
   vertical-align: text-bottom;
-  color: #333;
+  color: #0B261E;
 }
 
 .stratDelButton {
   align-self: center;
-  border: 1px solid #e81c4f;
+  background-color: #A7D9C9;
+  border: 1px solid #5A786E;
   border-radius: 290486px;
-  color: black;
+  color: #0B261E;
   font-size: 0.6em;
   letter-spacing: 0.2em;
   padding: 1em 2em;
@@ -54,7 +55,7 @@ h3 {
 }
 
 .stratDelButton:hover {
-  background:  #e81c4f;
-  color: white;
+  background:  #263d36;
+  color: #A7D9C9;
 }
 

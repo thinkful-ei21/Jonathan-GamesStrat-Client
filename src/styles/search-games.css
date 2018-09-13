@@ -10,8 +10,8 @@
 }
 
 .searchButton {
-  background-color: rgb(221, 221, 221);
-  border: 1px solid #e81c4f;
+  background-color: #A7D9C9;
+  border: 1px solid #5A786E;
   border-radius: 290486px;
   color: black;
   font-size: 0.6em;
@@ -28,12 +28,12 @@
 }
 
 .searchButton:hover {
-  background:  #e81c4f;
-  color: white;
+  background:  #263d36;
+  color: #A7D9C9;
 }
 
 .searchLabel {
-  color: white;
+  color: #A7D9C9;
   font-size: 28px;
   font-weight: bold;
   padding: 15px 0 15px 30px;
@@ -73,7 +73,7 @@ input:focus {
   }
 
 .diplayedSearchValue{
-  color: red;
+  color: #A7D9C9;
   font-size: 28px;
   font-weight: bold;
   padding: 15px 0 15px 0;
@@ -114,7 +114,7 @@ input:focus {
 }
 
 .game:hover {
-  border: 2px solid red
+  border: 2px solid #A7D9C9
 }
 
 .gameCover {

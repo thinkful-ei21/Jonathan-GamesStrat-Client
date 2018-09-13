@@ -11,7 +11,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
-  background-color: lightgray;
+  background-color: #A7D9C9;
   margin: 5px 0;
   width: 100%;
   border: 2px solid transparent
@@ -26,7 +26,7 @@
 }
 
 .stratDelRow:hover {
-  border: 2px solid red
+  border: 2px solid #0B261E
 }
 
 .stratTitle {
@@ -36,7 +36,7 @@
   margin: 5px;
   flex: 1 1;
   display: relative;
-  color: black;
+  color: #0B261E;
 }
 
 .user {
@@ -46,7 +46,7 @@
   margin: 5px;
   flex: 1 0;
   display: relative;
-  color: black;
+  color: #0B261E;
 }
 
 .listItem {
@@ -58,7 +58,7 @@
 
 .gameTitle {
   display: relative;
-  color: black;
+  color: #0B261E;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 12px;
@@ -66,7 +66,7 @@
 }
 
 .gameInfo {
-  background-color: beige;
+  background-color: #74A696;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -75,9 +75,10 @@
 
 .delButton {
   align-self: center;
-  border: 1px solid #e81c4f;
+  background-color: #A7D9C9;
+  border: 1px solid #5A786E;
   border-radius: 290486px;
-  color: black;
+  color: #0B261E;
   font-size: 0.6em;
   letter-spacing: 0.2em;
   padding: 1em ;
@@ -90,6 +91,6 @@
 }
 
 .delButton:hover {
-  background:  #e81c4f;
-  color: white;
+  background:  #263d36;
+  color: #A7D9C9;
 }
