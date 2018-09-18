@@ -25,6 +25,10 @@ __________________________
 ## Below are links to the live app and GitHub Repo for the server side:
 * [Live App](https://jonathan-gamestrat-client.herokuapp.com/)
 
+  Demo Login: 
+    - Username: DEMO
+    - Password: password123
+
 * [Server Repo](https://github.com/thinkful-ei21/Jonathan-GamesStrat-Server)
 
 __________________________
